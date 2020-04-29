@@ -24,9 +24,10 @@ fuchsia/tools/godepfile/${platform} git_revision:6922d7833617841e853a0be52a285f6
 @Subdir cmake
 infra/cmake/${platform} version:3.10.0
 
+# Download Clang from GRT server
 # Clang
-@Subdir clang
-fuchsia/clang/${platform} git_revision:0916ed75b2698f7ec638ea19b477352b72263e8a
+# @Subdir clang
+# fuchsia/clang/${platform} git_revision:0916ed75b2698f7ec638ea19b477352b72263e8a
 
 # Go
 @Subdir go
