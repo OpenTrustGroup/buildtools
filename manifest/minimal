@@ -7,9 +7,11 @@
              remotebranch="nebula"
              gerrithost="http://gerrit"/>
   </projects>
+  <!-- download toolchain action move to script manifest hook
   <hooks>
     <hook name="update"
           project="buildtools"
           action="update.sh"/>
   </hooks>
+  -->
 </manifest>
