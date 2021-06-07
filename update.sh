@@ -27,8 +27,8 @@ readonly OS="$(uname)"
 readonly HOSTOS=$(uname | tr '[:upper:]' '[:lower:]')
 readonly HOSTARCH="$(uname -m)"
 readonly INSTALL_DIR="${BUILDTOOLS_DIR}/${BUILDTOOLS_PLATFORM}"
-readonly FUCHSIA_DIR="$(cd "$(dirname "${BUILDTOOLS_DIR}")" && pwd)"
-readonly PREBUILT_DIR="${FUCHSIA_DIR}/zircon/prebuilt/downloads"
+# Use relative path so it wont' break when FUCHSIA_ROOT changes.
+readonly PREBUILT_DIR="../../zircon/prebuilt/downloads"
 
 rm -rf ${INSTALL_DIR}/clang
 rm -rf ${INSTALL_DIR}/clang.stamp
