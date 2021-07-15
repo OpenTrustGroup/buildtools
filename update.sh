@@ -16,9 +16,29 @@ rm -rf "${BUILDTOOLS_DIR}/linux64" "${BUILDTOOLS_DIR}/mac" "${BUILDTOOLS_DIR}/wi
 #fi
 
 #${SCRIPT_ROOT}/cipd ensure -ensure-file "${SCRIPT_ROOT}/fuchsia.ensure" -root "${BUILDTOOLS_DIR}/${BUILDTOOLS_PLATFORM}" -log-level warning
-curl --write-out %{http_code} -# -L "http://www/components/buildtools-linux-x64.tar.gz" -o "${BUILDTOOLS_DIR}/buildtools-linux-x64.tar.gz"
-tar xf ${BUILDTOOLS_DIR}/buildtools-linux-x64.tar.gz -C ${BUILDTOOLS_DIR}
-rm ${BUILDTOOLS_DIR}/buildtools-linux-x64.tar.gz
+
+pushd ${BUILDTOOLS_DIR} > /dev/null
+
+date
+base_url="http://www/components"
+tarball="buildtools-linux-x64.tar.gz"
+if [[ ! -f "${tarball}" ]]; then
+  echo "Downloading ${tarball} ..."
+
+  wget "${base_url}/${tarball}"
+  wget "${base_url}/${tarball}.sha1sum"
+  sha1sum -c ${tarball}.sha1sum
+else
+  echo "${tarball} already downloaded."
+fi
+date
+
+echo "Extracting ${tarball} ..."
+tar xf ${tarball}
+echo -e "\nDone."
+date
+
+popd
 
 ###############################################################################
 # From zircon/scripts/download-toolchain

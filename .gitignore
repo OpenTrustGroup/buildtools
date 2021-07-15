@@ -54,3 +54,5 @@
 /toolchain
 /win/gn.exe
 *.DS_Store
+buildtools-linux-x64.tar.gz
+buildtools-linux-x64.tar.gz.sha1sum
